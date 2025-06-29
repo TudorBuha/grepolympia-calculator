@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000099;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #88e1f2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #00aaff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #008ecc;
+}
+
+.result, .info, .donate {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #292929;
+    border-radius: 5px;
+    animation: fadeIn 0.8s ease;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
