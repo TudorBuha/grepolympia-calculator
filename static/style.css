@@ -210,3 +210,9 @@ li {
     font-size: 0.98em;
     opacity: 0.85;
 }
+
+.revolut-tag {
+    color: #7de2fc;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
