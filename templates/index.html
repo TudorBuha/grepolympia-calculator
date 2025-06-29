@@ -16,6 +16,10 @@
     </script>
 </head>
 <body>
+    <div id="loading-spinner">
+    <div class="spinner"></div>
+    </div>
+
     <div class="container">
         <h1>Grepolympia Calculator</h1>
         <form method="post">
@@ -51,8 +55,13 @@
         </div>
 
         <div class="donate">
-            <p>If you find this useful, consider donating: <strong>Revolut @buha.tudor</strong></p>
+            <p>If you find this useful, consider donating: <strong>Revolut: @tudorjjs5</strong></p>
         </div>
     </div>
+    <script>
+        window.addEventListener('load', () => {
+            document.getElementById('loading-spinner').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
