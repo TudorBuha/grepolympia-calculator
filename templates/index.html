@@ -40,6 +40,12 @@
             <button type="submit">Calculate Optimal Distribution</button>
         </form>
 
+        {% if extrapolation %}
+        <div class="extrapolation-warning" style="margin-top:18px; color:#ffb347; background:rgba(255,179,71,0.08); padding:10px 14px; border-radius:8px; text-align:center; font-weight:600;">
+            Warning: The requested level is higher than the available data. The prediction may be less accurate.
+        </div>
+        {% endif %}
+
         {% if result %}
         <div class="result">
             <h2>Best Distribution</h2>

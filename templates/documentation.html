@@ -27,7 +27,16 @@
             <li><strong>Estimated score:</strong> The score you are likely to achieve with this distribution. (This needs a bit more data to be accurate)</li>
         </ul>
         <h2>How does the prediction algorithm work?</h2>
-        <p>The app uses a machine learning model called a <strong>Random Forest</strong> to make its predictions. This model is trained on real data from past Summer Grepolympia events that i found. When you enter your available points, the app tries all possible ways to distribute them among the attributes, then uses the AI model to estimate the score for each combination. It then recommends the distribution that gives the highest predicted score. While this approach is powerful, the results are still estimates and depend on the quality and amount of data available. If you have any data that you think would be useful for the model, please contact me.</p>
+        <p>The app uses a smart model selection process to give you the best possible predictions:
+            <ul>
+                <li>The event data is split into 70% for training, 20% for validation, and 10% for testing.</li>
+                <li>Two models are trained: a <strong>Random Forest</strong> and a <strong>Polynomial Regression</strong> (degree 2).</li>
+                <li>The model that performs best on the validation set is automatically chosen for predictions.</li>
+                <li>For athlete levels within the data range, predictions are highly accurate (the app has seen these cases before).</li>
+                <li>If you enter a level higher than the available data, the app will show a warning and do its best to extrapolate, but results may be less reliable.</li>
+            </ul>
+            This approach ensures you get the most accurate and robust predictions possible, using both machine learning and careful model selection. If you have more event data that could improve the model, please contact me.
+        </p>
         <h2>Contact & Feedback</h2>
         <p>If you have questions, suggestions, or need help, you can:
             <ul>

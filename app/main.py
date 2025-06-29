@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, render_template, redirect
 from werkzeug.utils import secure_filename
-from app.model import load_dataset, train_model, predict_best_distribution
+from app.model import load_dataset, train_and_select_model, predict_best_distribution
 from datetime import datetime
 from flask_mail import Mail, Message
 
@@ -36,8 +36,8 @@ def predict():
 
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], discipline_files[discipline])
     df = load_dataset(file_path)
-    model = train_model(df)
-    dist, score = predict_best_distribution(model, level)
+    model_tuple = train_and_select_model(df)
+    dist, score, extrapolation = predict_best_distribution(model_tuple, level, df)
 
     return render_template("index.html",
                            disciplines=discipline_files.keys(),
@@ -45,6 +45,7 @@ def predict():
                            level=level,
                            result=dist,
                            score=score,
+                           extrapolation=extrapolation,
                            year=datetime.now().year)
 
 @app.route("/upload", methods=["POST"])
