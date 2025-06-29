@@ -55,17 +55,23 @@ input, select {
     padding: 12px 10px;
     border: none;
     border-radius: 8px;
-    background: rgba(255,255,255,0.08);
-    color: #f2f2f2;
+    background: #eaf6fb;
+    color: #232526;
     font-size: 1em;
     outline: none;
     transition: background 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 4px rgba(125,226,252,0.10);
 }
 
 input:focus, select:focus {
-    background: rgba(125,226,252,0.13);
+    background: #eaf6fb;
+    color: #232526;
     box-shadow: 0 0 0 2px #7de2fc55;
+}
+
+option {
+    background: #eaf6fb;
+    color: #232526;
 }
 
 button {
