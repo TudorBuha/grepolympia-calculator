@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grepolympia Calculator</title>
+</head>
+<body>
+  <h1>Grepolympia Calculator</h1>
+
+  <form method="post" action="/predict">
+    <label for="discipline">Select Discipline:</label>
+    <select name="discipline">
+      {% for name in disciplines %}
+        <option value="{{ name }}" {% if name == selected %}selected{% endif %}>{{ name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <label for="level">Athlete Level:</label>
+    <input type="number" name="level" required value="{{ level or '' }}"><br><br>
+
+    <input type="submit" value="Calculate">
+  </form>
+
+  {% if result %}
+    <h3>Optimal Distribution:</h3>
+    <ul>
+      <li>Concentration: {{ result.Concentration }}</li>
+      <li>Intuition: {{ result.Intuition }}</li>
+      <li>Accuracy: {{ result.Accuracy }}</li>
+      <li>Predicted Score: {{ score }}</li>
+    </ul>
+  {% endif %}
+
+  <hr>
+  <h3>Upload New Discipline</h3>
+  <form method="post" action="/upload" enctype="multipart/form-data">
+    <label>Discipline Name:</label>
+    <input type="text" name="new_name" required>
+    <label>Select Excel File:</label>
+    <input type="file" name="file" accept=".xlsx" required>
+    <input type="submit" value="Upload + Learn">
+  </form>
+</body>
+</html>
