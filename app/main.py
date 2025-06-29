@@ -3,7 +3,8 @@ from flask import Flask, request, render_template, redirect
 from werkzeug.utils import secure_filename
 from app.model import load_dataset, train_model, predict_best_distribution
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), '../templates'), static_folder=os.path.join(os.path.dirname(__file__), '../static'))
 app.config["UPLOAD_FOLDER"] = "app/data"
 
 # Mapă probe (va fi folosită și în frontend)
