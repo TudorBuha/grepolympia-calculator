@@ -65,3 +65,7 @@ def upload():
 @app.route("/contact", methods=["POST"])
 def contact():
     return render_template("index.html", disciplines=discipline_files.keys(), contact_success=True, year=datetime.now().year)
+
+@app.route("/docs")
+def docs():
+    return render_template("documentation.html")

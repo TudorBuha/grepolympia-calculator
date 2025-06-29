@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grepolympia Calculator - Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Grepolympia Calculator Documentation</h1>
+        <h2>What is this app?</h2>
+        <p>This app helps you find the best way to distribute your athlete's points in Summer Grepolympia events for optimal results. It uses real event data and machine learning to suggest the best attribute allocation for maximum score.</p>
+        <h2>How to use the app</h2>
+        <ol>
+            <li><strong>Select event:</strong> Choose the Summer Grepolympia event you want to optimize for from the dropdown menu.</li>
+            <li><strong>Enter athlete level:</strong> Input the number of points you have available to distribute among the attributes.</li>
+            <li><strong>Click "Calculate Optimal Distribution":</strong> The app will show you the best way to allocate your points for the highest estimated score.</li>
+        </ol>
+        <h2>What do the fields mean?</h2>
+        <ul>
+            <li><strong>Select event:</strong> The specific Summer Grepolympia event (e.g., Hoplite Race, Archery).</li>
+            <li><strong>Athlete level:</strong> The total number of points you can distribute among the three attributes.</li>
+        </ul>
+        <h2>Understanding the results</h2>
+        <ul>
+            <li><strong>Best Distribution:</strong> The recommended number of points to assign to each attribute.</li>
+            <li><strong>Estimated score:</strong> The score you are likely to achieve with this distribution. (This needs a bit more data to be accurate)</li>
+        </ul>
+        <h2>How does the prediction algorithm work?</h2>
+        <p>The app uses a machine learning model called a <strong>Random Forest</strong> to make its predictions. This model is trained on real data from past Summer Grepolympia events that i found. When you enter your available points, the app tries all possible ways to distribute them among the attributes, then uses the AI model to estimate the score for each combination. It then recommends the distribution that gives the highest predicted score. While this approach is powerful, the results are still estimates and depend on the quality and amount of data available. If you have any data that you think would be useful for the model, please contact me.</p>
+        <h2>Contact & Feedback</h2>
+        <p>If you have questions, suggestions, or need help, you can:
+            <ul>
+                <li>Email: <a href="mailto:grepolympia@gmail.com">grepolympia@gmail.com</a></li>
+                <li>Discord: <strong>tudor_buha</strong></li>
+                <li>Or use the contact form on the main page.(Not working at the moment)</li>
+            </ul>
+        </p>
+        <h2>Tips & Limitations</h2>
+        <ul>
+            <li>The app uses real event data and machine learning, but results are estimates and may not guarantee the absolute best score every time.</li>
+            <li>Only the events listed in the dropdown are currently supported.(I'm working on adding more soon.)</li>
+        </ul>
+        <a href="/" class="button" style="display:block;text-align:center;margin-top:30px;">&larr; Back to Calculator</a>
+    </div>
+</body>
+</html> 
