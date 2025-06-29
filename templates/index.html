@@ -26,12 +26,12 @@
             <label for="event">Select event:</label>
             <select name="discipline" id="discipline">
                 {% for file in disciplines %}
-                    <option value="{{ file }}" {% if file == selected_event %}selected{% endif %}>{{ file }}</option>
+                    <option value="{{ file }}" {% if file == selected %}selected{% endif %}>{{ file }}</option>
                 {% endfor %}
             </select>
 
             <label for="level">Athlete level (points to distribute):</label>
-            <input type="number" id="level" name="level" required min="0">
+            <input type="number" id="level" name="level" required min="0" value="{{ level if level is defined else '' }}">
 
             <button type="submit">Calculate Optimal Distribution</button>
         </form>
@@ -47,12 +47,6 @@
             <p><strong>Estimated score:</strong> {{ score }}</p>
         </div>
         {% endif %}
-
-        <div class="info">
-            <h3>How to upload new events:</h3>
-            <p>You can upload your own Excel files following the same format (columns: "Concentration", "Intuition", "Accuracy", "Score +/-5%").</p>
-            <p>Put them in the <code>app/data</code> folder, then push the update to GitHub.</p>
-        </div>
 
         <div class="donate">
             <p>If you find this useful, consider donating: <strong>Revolut: @tudorjjs5</strong></p>
