@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 from itertools import product
 
 def load_dataset(file_path):
@@ -10,7 +11,7 @@ def load_dataset(file_path):
 def train_model(df):
     X = df[["Concentration", "Intuition", "Accuracy"]]
     y = df["Score"]
-    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model = LinearRegression()
     model.fit(X, y)
     return model
 
