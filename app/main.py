@@ -25,6 +25,12 @@ discipline_files = {
     "Archery": "archery.xlsx"
 }
 
+# Attribute names per event
+event_attributes = {
+    "Hoplite Race": ["Speed", "Strength", "Endurance"],
+    "Archery": ["Concentration", "Intuition", "Accuracy"]
+}
+
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html", disciplines=discipline_files.keys(), year=datetime.now().year)
@@ -39,11 +45,15 @@ def predict():
     model_tuple = train_and_select_model(df)
     dist, score, extrapolation = predict_best_distribution(model_tuple, level, df)
 
+    # Map result keys to attribute names for the selected event
+    attr_names = event_attributes[discipline]
+    result_named = {attr_names[i]: v for i, v in enumerate(dist.values())}
+
     return render_template("index.html",
                            disciplines=discipline_files.keys(),
                            selected=discipline,
                            level=level,
-                           result=dist,
+                           result=result_named,
                            score=score,
                            extrapolation=extrapolation,
                            year=datetime.now().year)
