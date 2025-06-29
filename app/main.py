@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, render_template, redirect
 from werkzeug.utils import secure_filename
 from app.model import load_dataset, train_model, predict_best_distribution
+from datetime import datetime
 
 # app = Flask(__name__)
 app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), '../templates'), static_folder=os.path.join(os.path.dirname(__file__), '../static'))
@@ -15,7 +16,7 @@ discipline_files = {
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html", disciplines=discipline_files.keys())
+    return render_template("index.html", disciplines=discipline_files.keys(), year=datetime.now().year)
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -32,7 +33,8 @@ def predict():
                            selected=discipline,
                            level=level,
                            result=dist,
-                           score=score)
+                           score=score,
+                           year=datetime.now().year)
 
 @app.route("/upload", methods=["POST"])
 def upload():
@@ -48,3 +50,8 @@ def upload():
         discipline_files[new_name] = filename
 
     return redirect("/")
+
+@app.route("/contact", methods=["POST"])
+def contact():
+    # In a real app, you would send the email here
+    return render_template("index.html", disciplines=discipline_files.keys(), contact_success=True, year=datetime.now().year)

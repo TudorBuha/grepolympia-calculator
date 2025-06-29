@@ -51,6 +51,24 @@
         <div class="donate">
             <p>If you find this useful, consider donating: <strong>Revolut: @tudorjjs5</strong></p>
         </div>
+
+        <div class="contact">
+            <h3>Questions or Suggestions?</h3>
+            <p>If you have any questions or ideas to improve the app, please fill out the form below or email <a href="mailto:tudorbuha2@gmail.com">tudorbuha2@gmail.com</a>.<br>
+            You can also contact me on Discord: <strong>tudor_buha</strong>.</p>
+            <form method="post" action="/contact">
+                <input type="email" name="email" placeholder="Your email (optional)" autocomplete="email">
+                <textarea name="message" placeholder="Your message or suggestion..." required rows="4"></textarea>
+                <button type="submit">Send Feedback</button>
+            </form>
+            {% if contact_success %}
+                <div class="contact-success">Thank you for your feedback!</div>
+            {% endif %}
+        </div>
+
+        <footer class="footer">
+            <p>&copy; {{ year }} Grepolympia Calculator. All rights reserved.</p>
+        </footer>
     </div>
     <script>
         window.addEventListener('load', () => {
