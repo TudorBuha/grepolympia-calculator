@@ -35,7 +35,7 @@
             </select>
 
             <label for="level">Athlete level (points to distribute):</label>
-            <input type="number" id="level" name="level" required min="0" value="{{ level if level is defined else '' }}">
+            <input type="number" id="level" name="level" required min="0" max="500" value="{{ level if level is defined else '' }}">
 
             <button type="submit">Calculate Optimal Distribution</button>
         </form>
