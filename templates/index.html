@@ -24,7 +24,7 @@
         <h1>Grepolympia Calculator</h1>
        <form method="post" action="/predict">
             <label for="event">Select event:</label>
-            <select name="event" id="event">
+            <select name="discipline" id="discipline">
                 {% for file in disciplines %}
                     <option value="{{ file }}" {% if file == selected_event %}selected{% endif %}>{{ file }}</option>
                 {% endfor %}
