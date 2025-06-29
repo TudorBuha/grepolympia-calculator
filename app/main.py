@@ -40,6 +40,15 @@ def predict():
     discipline = request.form["discipline"]
     level = int(request.form["level"])
 
+    if level > 500:
+        error = "Input too large: The model runs very slow on big values. Please enter a value of 500 or less."
+        return render_template("index.html",
+                               disciplines=discipline_files.keys(),
+                               selected=discipline,
+                               level=level,
+                               error=error,
+                               year=datetime.now().year)
+
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], discipline_files[discipline])
     df = load_dataset(file_path)
     model_tuple = train_and_select_model(df)
