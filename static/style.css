@@ -216,3 +216,14 @@ li {
     font-weight: 700;
     letter-spacing: 0.5px;
 }
+
+.contact a {
+    color: #7de2fc;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.contact a:hover {
+    color: #b9fffc;
+    text-decoration: underline wavy;
+}

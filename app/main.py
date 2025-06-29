@@ -3,10 +3,21 @@ from flask import Flask, request, render_template, redirect
 from werkzeug.utils import secure_filename
 from app.model import load_dataset, train_model, predict_best_distribution
 from datetime import datetime
+from flask_mail import Mail, Message
 
 # app = Flask(__name__)
 app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), '../templates'), static_folder=os.path.join(os.path.dirname(__file__), '../static'))
 app.config["UPLOAD_FOLDER"] = "app/data"
+
+# Flask-Mail configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'grepolympia@gmail.com'  # update if needed
+app.config['MAIL_PASSWORD'] = 'YOUR_APP_PASSWORD_HERE'  # to be filled in by user
+app.config['MAIL_DEFAULT_SENDER'] = 'grepolympia@gmail.com'
+
+mail = Mail(app)
 
 # Mapă probe (va fi folosită și în frontend)
 discipline_files = {
@@ -53,5 +64,4 @@ def upload():
 
 @app.route("/contact", methods=["POST"])
 def contact():
-    # In a real app, you would send the email here
     return render_template("index.html", disciplines=discipline_files.keys(), contact_success=True, year=datetime.now().year)
