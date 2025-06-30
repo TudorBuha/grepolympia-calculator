@@ -22,13 +22,15 @@ mail = Mail(app)
 # Mapă probe (va fi folosită și în frontend)
 discipline_files = {
     "Hoplite Race": "hoplite_race.xlsx",
-    "Archery": "archery.xlsx"
+    "Archery": "archery.xlsx",
+    "Javelin Throw": "javelin_throw.xlsx"
 }
 
 # Attribute names per event
 event_attributes = {
     "Hoplite Race": ["Speed", "Strength", "Endurance"],
-    "Archery": ["Concentration", "Intuition", "Accuracy"]
+    "Archery": ["Concentration", "Intuition", "Accuracy"],
+    "Javelin Throw": ["Momentum", "Technique", "Throwing Power"]
 }
 
 @app.route("/", methods=["GET"])
