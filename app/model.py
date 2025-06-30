@@ -59,6 +59,20 @@ def generate_distributions(total_points):
     return distributions
 
 def predict_best_distribution(model_tuple, total_points, df=None, attr_names=None):
+    # 1. Try to find an exact match in the data
+    if df is not None and attr_names is not None:
+        candidates = generate_distributions(total_points)
+        for dist in candidates:
+            match = df[
+                (df[attr_names[0]] == dist[0]) &
+                (df[attr_names[1]] == dist[1]) &
+                (df[attr_names[2]] == dist[2])
+            ]
+            if not match.empty:
+                best_dist = {attr_names[i]: dist[i] for i in range(3)}
+                best_score = match["Score"].values[0]
+                return best_dist, round(float(best_score), 2), False  # No extrapolation
+    # 2. If no exact match, use the model as before
     model_type, model, poly = model_tuple
     candidates = generate_distributions(total_points)
     X_pred = pd.DataFrame(candidates, columns=attr_names)
@@ -70,7 +84,6 @@ def predict_best_distribution(model_tuple, total_points, df=None, attr_names=Non
     best_index = np.argmax(scores)
     best_dist = X_pred.iloc[best_index].to_dict()
     best_score = scores[best_index]
-    # Extrapolation warning
     extrapolation = False
     if df is not None and attr_names is not None and total_points > df[attr_names].sum(axis=1).max():
         extrapolation = True
