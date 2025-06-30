@@ -53,11 +53,10 @@ def predict():
 
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], discipline_files[discipline])
     df = load_dataset(file_path)
-    model_tuple = train_and_select_model(df)
-    dist, score, extrapolation = predict_best_distribution(model_tuple, level, df)
-
-    # Map result keys to attribute names for the selected event
     attr_names = event_attributes[discipline]
+    model_tuple = train_and_select_model(df, attr_names)
+    dist, score, extrapolation = predict_best_distribution(model_tuple, level, df, attr_names)
+
     result_named = {attr_names[i]: v for i, v in enumerate(dist.values())}
 
     return render_template("index.html",

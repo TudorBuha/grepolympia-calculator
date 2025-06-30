@@ -20,11 +20,11 @@ def load_dataset(file_path):
     df = pd.read_excel(file_path)
     return df
 
-def train_and_select_model(df):
+def train_and_select_model(df, attr_names):
     train, val, test = split_data(df)
-    X_train = train[["Concentration", "Intuition", "Accuracy"]]
+    X_train = train[attr_names]
     y_train = train["Score"]
-    X_val = val[["Concentration", "Intuition", "Accuracy"]]
+    X_val = val[attr_names]
     y_val = val["Score"]
 
     # Random Forest
@@ -58,10 +58,10 @@ def generate_distributions(total_points):
     ]
     return distributions
 
-def predict_best_distribution(model_tuple, total_points, df=None):
+def predict_best_distribution(model_tuple, total_points, df=None, attr_names=None):
     model_type, model, poly = model_tuple
     candidates = generate_distributions(total_points)
-    X_pred = pd.DataFrame(candidates, columns=["Concentration", "Intuition", "Accuracy"])
+    X_pred = pd.DataFrame(candidates, columns=attr_names)
     if model_type == "poly":
         X_pred_poly = poly.transform(X_pred)
         scores = model.predict(X_pred_poly)
@@ -72,6 +72,6 @@ def predict_best_distribution(model_tuple, total_points, df=None):
     best_score = scores[best_index]
     # Extrapolation warning
     extrapolation = False
-    if df is not None and total_points > df[["Concentration", "Intuition", "Accuracy"]].sum(axis=1).max():
+    if df is not None and attr_names is not None and total_points > df[attr_names].sum(axis=1).max():
         extrapolation = True
     return best_dist, round(float(best_score), 2), extrapolation
