@@ -1,5 +1,7 @@
 # Grepolympia Calculator
 
+https://grepolympia-calculator.onrender.com
+
 A web app that calculates the optimal point distribution for Summer Grepolympia events in Grepolis using machine learning.
 
 ## Features
