@@ -24,7 +24,7 @@ discipline_files = {
     "Hoplite Race": "hoplite_race.xlsx",
     "Archery": "archery.xlsx",
     "Javelin Throw": "javelin_throw.xlsx",
-    "Chariots Race": "chariots_race.xlsx"
+    "Chariots Race": "chariot_race.xlsx"
 }
 
 # Attribute names per event
