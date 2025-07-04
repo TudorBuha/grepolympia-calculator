@@ -23,14 +23,16 @@ mail = Mail(app)
 discipline_files = {
     "Hoplite Race": "hoplite_race.xlsx",
     "Archery": "archery.xlsx",
-    "Javelin Throw": "javelin_throw.xlsx"
+    "Javelin Throw": "javelin_throw.xlsx",
+    "Chariots Race": "chariots_race.xlsx"
 }
 
 # Attribute names per event
 event_attributes = {
     "Hoplite Race": ["Speed", "Strength", "Endurance"],
     "Archery": ["Concentration", "Intuition", "Accuracy"],
-    "Javelin Throw": ["Momentum", "Technique", "Throwing Power"]
+    "Javelin Throw": ["Momentum", "Technique", "Throwing Power"],
+    "Chariots Race": ["Horsepower", "Strength", "Control"]
 }
 
 @app.route("/", methods=["GET"])
